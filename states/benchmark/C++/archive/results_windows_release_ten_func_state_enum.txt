@@ -1,0 +1,20 @@
+[RELEASE]
+Performance testing { ten_func_state_enum } 
+Settings :: TestCount { 10 } and IterCount { 1000000 }
+Overhead[std::chrono] :: 72ns
+
+Test [0] :: 73ns
+Test [1] :: 73ns
+Test [2] :: 73ns
+Test [3] :: 73ns
+Test [4] :: 80ns
+Test [5] :: 73ns
+Test [6] :: 73ns
+Test [7] :: 73ns
+Test [8] :: 74ns
+Test [9] :: 73ns
+
+More details
+AWG of Test Case :: 73ns
+MAX of Test Case :: 80ns
+MIN of Test Case :: 73ns

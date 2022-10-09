@@ -1,0 +1,20 @@
+[RELEASE]
+Performance testing { index_of_except } 
+Settings :: TestCount { 10 } and IterCount { 1000000 }
+Overhead[std::chrono] :: 72ns
+
+Test [0] :: 173923ns
+Test [1] :: 173701ns
+Test [2] :: 173138ns
+Test [3] :: 174672ns
+Test [4] :: 173531ns
+Test [5] :: 173642ns
+Test [6] :: 174146ns
+Test [7] :: 173735ns
+Test [8] :: 172863ns
+Test [9] :: 174027ns
+
+More details
+AWG of Test Case :: 173737ns
+MAX of Test Case :: 174672ns
+MIN of Test Case :: 172863ns

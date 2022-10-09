@@ -1,0 +1,20 @@
+[RELEASE]
+Performance testing { index_of_state } 
+Settings :: TestCount { 10 } and IterCount { 1000000 }
+Overhead[std::chrono] :: 72ns
+
+Test [0] :: 81ns
+Test [1] :: 73ns
+Test [2] :: 73ns
+Test [3] :: 73ns
+Test [4] :: 73ns
+Test [5] :: 73ns
+Test [6] :: 78ns
+Test [7] :: 73ns
+Test [8] :: 73ns
+Test [9] :: 73ns
+
+More details
+AWG of Test Case :: 74ns
+MAX of Test Case :: 81ns
+MIN of Test Case :: 73ns

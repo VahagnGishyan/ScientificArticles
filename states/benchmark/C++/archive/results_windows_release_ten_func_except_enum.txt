@@ -1,0 +1,20 @@
+[RELEASE]
+Performance testing { ten_func_except_enum } 
+Settings :: TestCount { 10 } and IterCount { 1000000 }
+Overhead[std::chrono] :: 72ns
+
+Test [0] :: 16910ns
+Test [1] :: 14421ns
+Test [2] :: 14411ns
+Test [3] :: 14613ns
+Test [4] :: 14886ns
+Test [5] :: 14376ns
+Test [6] :: 14385ns
+Test [7] :: 14360ns
+Test [8] :: 14985ns
+Test [9] :: 14455ns
+
+More details
+AWG of Test Case :: 14780ns
+MAX of Test Case :: 16910ns
+MIN of Test Case :: 14360ns

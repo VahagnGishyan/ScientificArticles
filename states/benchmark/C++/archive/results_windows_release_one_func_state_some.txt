@@ -1,0 +1,20 @@
+[RELEASE]
+Performance testing { one_func_state_some } 
+Settings :: TestCount { 10 } and IterCount { 1000000 }
+Overhead[std::chrono] :: 44ns
+
+Test [0] :: 187ns
+Test [1] :: 246ns
+Test [2] :: 245ns
+Test [3] :: 232ns
+Test [4] :: 218ns
+Test [5] :: 235ns
+Test [6] :: 226ns
+Test [7] :: 185ns
+Test [8] :: 225ns
+Test [9] :: 227ns
+
+More details
+AWG of Test Case :: 222ns
+MAX of Test Case :: 246ns
+MIN of Test Case :: 185ns

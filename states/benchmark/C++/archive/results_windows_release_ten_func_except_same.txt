@@ -1,0 +1,20 @@
+[RELEASE]
+Performance testing { ten_func_except_same } 
+Settings :: TestCount { 10 } and IterCount { 1000000 }
+Overhead[std::chrono] :: 72ns
+
+Test [0] :: 14763ns
+Test [1] :: 14616ns
+Test [2] :: 15217ns
+Test [3] :: 14613ns
+Test [4] :: 14620ns
+Test [5] :: 14620ns
+Test [6] :: 14841ns
+Test [7] :: 15410ns
+Test [8] :: 14648ns
+Test [9] :: 14596ns
+
+More details
+AWG of Test Case :: 14794ns
+MAX of Test Case :: 15410ns
+MIN of Test Case :: 14596ns
