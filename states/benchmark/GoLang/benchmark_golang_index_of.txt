@@ -1,0 +1,17 @@
+Dureationis for test case index_of { ########## }
+
+[0] 5826 nsecs
+[1] 5515 nsecs
+[2] 5618 nsecs
+[3] 5580 nsecs
+[4] 5607 nsecs
+[5] 5519 nsecs
+[6] 5540 nsecs
+[7] 6496 nsecs
+[8] 5686 nsecs
+[9] 5590 nsecs
+
+Avg is 5697 nsecs
+
+Overhead is 141
+
