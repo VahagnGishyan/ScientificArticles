@@ -1,0 +1,26 @@
+Dureations for test case ten_function_state
+[0] { ########## }
+[1] { ########## }
+[2] { ########## }
+[3] { ########## }
+[4] { ########## }
+[5] { ########## }
+[6] { ########## }
+[7] { ########## }
+[8] { ########## }
+[9] { ########## }
+
+[0] 97 nsecs
+[1] 97 nsecs
+[2] 96 nsecs
+[3] 96 nsecs
+[4] 98 nsecs
+[5] 96 nsecs
+[6] 96 nsecs
+[7] 96 nsecs
+[8] 97 nsecs
+[9] 97 nsecs
+
+Avg is 96 nsecs
+Overhead is 38
+

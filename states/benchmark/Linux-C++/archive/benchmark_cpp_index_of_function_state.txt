@@ -1,0 +1,26 @@
+Dureations for test case index_of_function_state
+[0] { ########## }
+[1] { ########## }
+[2] { ########## }
+[3] { ########## }
+[4] { ########## }
+[5] { ########## }
+[6] { ########## }
+[7] { ########## }
+[8] { ########## }
+[9] { ########## }
+
+[0] 380 nsecs
+[1] 376 nsecs
+[2] 378 nsecs
+[3] 382 nsecs
+[4] 376 nsecs
+[5] 386 nsecs
+[6] 375 nsecs
+[7] 391 nsecs
+[8] 379 nsecs
+[9] 379 nsecs
+
+Avg is 380 nsecs
+Overhead is 36
+
