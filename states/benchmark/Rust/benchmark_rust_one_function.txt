@@ -1,0 +1,16 @@
+Dureationis for test case one_function { ########## }
+
+[0] 295 nsecs
+[1] 290 nsecs
+[2] 283 nsecs
+[3] 307 nsecs
+[4] 321 nsecs
+[5] 292 nsecs
+[6] 322 nsecs
+[7] 294 nsecs
+[8] 436 nsecs
+[9] 387 nsecs
+
+Avg is 322 nsecs
+
+Overhead is {overhead})
