@@ -1,0 +1,17 @@
+Dureationis for test case ten_function { ########## }
+
+[0] 18139 nsecs
+[1] 18019 nsecs
+[2] 18069 nsecs
+[3] 19688 nsecs
+[4] 18566 nsecs
+[5] 18104 nsecs
+[6] 18684 nsecs
+[7] 18214 nsecs
+[8] 19254 nsecs
+[9] 17923 nsecs
+
+Avg is 18466 nsecs
+
+Overhead is 84
+
