@@ -4,8 +4,8 @@
 //RELEASE
 
 #include "dsrc_ptr.h"
-#include "unit_test.h"
 #include "errlog.h"
+#include "tests.h"
 
 #include <list>
 #include <algorithm>
@@ -16,8 +16,10 @@ int main()
 
 	try
 	{
-		//dsrc::unit_test::success_run();
-		//dsrc::unit_test::fail_run();
+		dsrc::unique_test::success_run();
+		dsrc::unique_test::fail_run();
+		dsrc::shared_test::success_run();
+		dsrc::shared_test::fail_run();
 	}
 	catch (const std::string& message)
 	{

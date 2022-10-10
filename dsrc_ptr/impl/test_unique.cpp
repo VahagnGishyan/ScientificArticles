@@ -1,11 +1,13 @@
 
 #include <list>
 #include <functional>
+
 #include "dsrc_ptr.h"
+#include "tests.h"
 
 namespace dsrc
 {
-	namespace unit_test
+	namespace unique_test
 	{
 		template <typename valueT>
 		static void success_test_00()
