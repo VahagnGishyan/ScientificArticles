@@ -3,12 +3,9 @@
 #include <iostream>
 #include <string>
 
-namespace dsrc
+namespace errlog
 {
-	namespace errlog
-	{
-		void writeln();
-		void writeln(const std::string& message);
-		void writeln(std::string&& message);
-	}
+	void writeln();
+	void writeln(const std::string& message);
+	void writeln(std::string&& message);
 }

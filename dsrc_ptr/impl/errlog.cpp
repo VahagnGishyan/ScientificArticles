@@ -1,23 +1,20 @@
 
 #include "errlog.h"
 
-namespace dsrc
+namespace errlog
 {
-	namespace errlog
+	void writeln()
 	{
-		void writeln()
-		{
-			std::cout << std::endl;
-		}
+		std::cout << std::endl;
+	}
 
-		void writeln(const std::string& message)
-		{
-			std::cout << message << std::endl;
-		}
+	void writeln(const std::string& message)
+	{
+		std::cout << message << std::endl;
+	}
 
-		void writeln(std::string&& message)
-		{
-			std::cout << message << std::endl;
-		}
+	void writeln(std::string&& message)
+	{
+		std::cout << message << std::endl;
 	}
 }
