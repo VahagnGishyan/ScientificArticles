@@ -317,6 +317,8 @@ namespace test
 #endif
 	}
 
+	/////////////////////////////////////////////////////////
+
 	template <typename valueT, class... ArgsT>
 	static void fail_test_01(ArgsT&&... args)
 	{
@@ -336,6 +338,8 @@ namespace test
 #endif
 	}
 
+	/////////////////////////////////////////////////////////
+
 	template <typename valueT, class... ArgsT>
 	static void fail_test_02(ArgsT&&... args)
 	{
@@ -353,6 +357,8 @@ namespace test
 		throw std::string("function fail_test_02");
 #endif
 	}
+
+	/////////////////////////////////////////////////////////
 
 	template <typename valueT, class... ArgsT>
 	static void fail_test_03(ArgsT&&... args)
@@ -373,6 +379,8 @@ namespace test
 #endif
 	}
 
+	/////////////////////////////////////////////////////////
+
 	template <typename valueT, class... ArgsT>
 	static void fail_test_04(ArgsT&&... args)
 	{
@@ -392,6 +400,27 @@ namespace test
 	}
 
 	template <typename valueT, class... ArgsT>
+	static void fail_test_05(ArgsT&&... args)
+	{
+#ifdef DEBUG
+		try
+		{
+			dsrc_ptr<valueT> ptr = nullptr;
+			ptr = dsrc_ptr<valueT>::make(args...);
+			ptr = dsrc_ptr<valueT>::make(args...);
+			dsrc_ptr<valueT>::free(ptr);
+		}
+		catch (...)
+		{
+			return;
+		}
+		throw std::string("function fail_test_04");
+#endif
+	}
+
+	/////////////////////////////////////////////////////////
+
+	template <typename valueT, class... ArgsT>
 	static void fail_run(ArgsT... args)
 	{
 #ifdef DEBUG
@@ -400,6 +429,7 @@ namespace test
 		fail_test_02<valueT>(args...);
 		fail_test_03<valueT>(args...);
 		fail_test_04<valueT>(args...);
+		fail_test_05<valueT>(args...);
 #endif
 	}
 
