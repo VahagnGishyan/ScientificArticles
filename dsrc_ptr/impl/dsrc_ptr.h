@@ -2,7 +2,7 @@
 #pragma once
 
 #include <assert.h>
-#ifndef RELEASE
+#ifdef DEBUG
 #include "errlog.h"
 #else 
 #include <iostream>
@@ -18,7 +18,7 @@ public:
 
 	dsrc_ptr(nullptr_t) :
 		m_data(nullptr)
-#ifndef RELEASE
+#ifdef DEBUG
 		, m_ref_count (new uint(0))
 		, m_is_deleted(new bool(true))
 #endif
@@ -28,7 +28,7 @@ private:
 	template <class... ArgsT>
 	explicit dsrc_ptr(ArgsT&&... args) :
 		m_data(new valueT(args...))
-#ifndef RELEASE
+#ifdef DEBUG
 		, m_ref_count(new uint(1))
 		, m_is_deleted(new bool(false))
 #endif
@@ -40,7 +40,7 @@ public:
 	dsrc_ptr(const dsrc_ptr& obj)
 	{
 		m_data = obj.m_data;
-#ifndef RELEASE
+#ifdef DEBUG
 		if (obj.m_data == nullptr)
 		{
 			return;
@@ -56,14 +56,16 @@ public:
 		if (obj.m_data == nullptr)
 		{
 			m_data = nullptr;
+#ifdef DEBUG
 			m_ref_count = nullptr;
 			m_is_deleted = nullptr;
+#endif
 			return;
 		}
 
 		m_data = obj.m_data;
 		obj.m_data = nullptr;
-#ifndef RELEASE
+#ifdef DEBUG
 		m_ref_count = obj.m_ref_count;
 		m_is_deleted = obj.m_is_deleted;
 		obj.m_ref_count = nullptr;
@@ -75,7 +77,7 @@ public:
 
 	~dsrc_ptr()
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		if (m_is_deleted == nullptr)
 		{
 			assert(m_data == nullptr && m_ref_count == nullptr);
@@ -107,17 +109,17 @@ public:
 
 	dsrc_ptr& operator=(const dsrc_ptr& obj) // copy assignment
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		if (m_data != nullptr)
 		{
 			free(*this);
 			throw std::string("dsrc_ptr::operator=(&&) throw exception, trying double alocate");
 		}
-#endif
 		--(*m_ref_count);
+#endif
 
 		m_data = obj.m_data;
-#ifndef RELEASE
+#ifdef DEBUG
 		m_ref_count = obj.m_ref_count;
 		m_is_deleted = obj.m_is_deleted;
 		if (obj.m_data != nullptr)
@@ -130,7 +132,7 @@ public:
 
 	dsrc_ptr& operator=(dsrc_ptr&& obj) noexcept
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		if (*m_ref_count > 1)
 		{
 			--(*m_ref_count);
@@ -165,7 +167,7 @@ public:
 
 	valueT& operator*()
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		if (m_data == nullptr || (m_is_deleted != nullptr && *m_is_deleted == true))
 		{
 			throw std::string("dsrc_ptr::operator* throw exception, trying indirect nullptr");
@@ -176,28 +178,13 @@ public:
 
 	valueT* operator->() const
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		if (m_data == nullptr || (m_is_deleted != nullptr && *m_is_deleted == true))
 		{
 			throw std::string("dsrc_ptr::operator-> throw exception, trying access nullptr");
 		}
 #endif
 		return m_data;
-	}
-
-	/////////////////////////////////////////////////////////
-
-public:
-
-	uint get_count() const
-	{
-#ifndef RELEASE
-		if (m_data == nullptr || (m_is_deleted != nullptr && *m_is_deleted == true))
-		{
-			throw std::string("dsrc_ptr::operator-> throw exception, trying access nullptr");
-		}
-#endif
-		return *m_ref_count;
 	}
 
 	/////////////////////////////////////////////////////////
@@ -211,7 +198,7 @@ public:
 
 	static void free(dsrc_ptr& ptr)
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		if (ptr.m_is_deleted == nullptr)
 		{
 			assert(ptr.m_ref_count == nullptr && ptr.m_data == nullptr);
@@ -247,6 +234,8 @@ public:
 
 private:
 	valueT* m_data;
+#ifdef DEBUG
 	uint* m_ref_count = nullptr;
 	bool* m_is_deleted = nullptr;
+#endif
 };

@@ -258,7 +258,7 @@ namespace test
 	template <typename valueT>
 	static void fail_test_00()
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		try
 		{
 			dsrc_ptr<valueT> ptr = nullptr;
@@ -275,7 +275,7 @@ namespace test
 	template <typename valueT, class... ArgsT>
 	static void fail_test_01(ArgsT&&... args)
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		try
 		{
 			dsrc_ptr<valueT> ptr = nullptr;
@@ -294,7 +294,7 @@ namespace test
 	template <typename valueT, class... ArgsT>
 	static void fail_test_02(ArgsT&&... args)
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		try
 		{
 			dsrc_ptr<valueT> ptr = dsrc_ptr<valueT>::make(args...);
@@ -312,7 +312,7 @@ namespace test
 	template <typename valueT, class... ArgsT>
 	static void fail_test_03(ArgsT&&... args)
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		//destructor
 
 		//try
@@ -331,7 +331,7 @@ namespace test
 	template <typename valueT, class... ArgsT>
 	static void fail_test_04(ArgsT&&... args)
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		//destructor
 
 		//try
@@ -349,7 +349,7 @@ namespace test
 	template <typename valueT, class... ArgsT>
 	static void fail_run(ArgsT... args)
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		fail_test_00<valueT>();
 		fail_test_01<valueT>(args...);
 		fail_test_02<valueT>(args...);
@@ -360,7 +360,7 @@ namespace test
 
 	void fail_run()
 	{
-#ifndef RELEASE
+#ifdef DEBUG
 		fail_run<int>(1478);
 		fail_run<double>(454.848748);
 
