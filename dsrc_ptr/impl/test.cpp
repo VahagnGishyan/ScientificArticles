@@ -216,6 +216,48 @@ namespace test
 	/////////////////////////////////////////////////////////
 
 	template <typename valueT, class... ArgsT>
+	static void success_test_15(ArgsT&&... args)
+	{
+		dsrc_ptr<valueT> ptr1 = dsrc_ptr<valueT>::make(args...);
+		dsrc_ptr<valueT> ptr2 = nullptr;
+
+		dsrc_ptr<valueT>::free(ptr1);
+		ptr1 = ptr2;
+	}
+
+	/////////////////////////////////////////////////////////
+
+	template <typename valueT, class... ArgsT>
+	static void success_test_16(ArgsT&&... args)
+	{
+		dsrc_ptr<valueT> ptr1 = dsrc_ptr<valueT>::make(args...);
+		dsrc_ptr<valueT> ptr2 = dsrc_ptr<valueT>::make(args...);
+
+		dsrc_ptr<valueT>::free(ptr1);
+		ptr1 = ptr2;
+		dsrc_ptr<valueT>::free(ptr1);
+	}
+
+	/////////////////////////////////////////////////////////
+
+	/////////////////////////////////////////////////////////
+
+	template <typename valueT, class... ArgsT>
+	static void success_test_17(ArgsT&&... args)
+	{
+		dsrc_ptr<valueT> ptr1 = nullptr;
+		dsrc_ptr<valueT> ptr2 = nullptr;
+
+		ptr1 = ptr2;
+		ptr1 = ptr2;
+
+		ptr2 = ptr1;
+		ptr2 = ptr1;
+	}
+
+	/////////////////////////////////////////////////////////
+
+	template <typename valueT, class... ArgsT>
 	static void success_run(ArgsT&&... args)
 	{
 		success_test_00<valueT>();
@@ -233,22 +275,25 @@ namespace test
 		success_test_12<valueT>(args...);
 		success_test_13<valueT>(args...);
 		success_test_14<valueT>(args...);
+		success_test_15<valueT>(args...);
+		success_test_16<valueT>(args...);
+		success_test_17<valueT>(args...);
 	}
 
 	void success_run()
 	{
 		success_run<int>(4);
-		//success_run<double>(12.78);
+		success_run<double>(12.78);
 
-		//struct SomeT
-		//{
-		//	SomeT(int aiv1, int aiv2, double adv) : iv1(aiv1), iv2(aiv2), dv(adv) {}
+		struct SomeT
+		{
+			SomeT(int aiv1, int aiv2, double adv) : iv1(aiv1), iv2(aiv2), dv(adv) {}
 
-		//	int iv1;
-		//	int iv2;
-		//	double dv;
-		//};
-		//success_run<SomeT>(48, 478, 123.456);
+			int iv1;
+			int iv2;
+			double dv;
+		};
+		success_run<SomeT>(48, 478, 123.456);
 	}
 
 	/////////////////////////////////////////////////////////

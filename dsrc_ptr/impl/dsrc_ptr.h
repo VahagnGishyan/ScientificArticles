@@ -1,6 +1,8 @@
 
 #pragma once
 
+//#define DEBUG // for windows
+
 #include <assert.h>
 #ifdef DEBUG
 #include "errlog.h"
@@ -47,7 +49,7 @@ public:
 		}
 		m_ref_count = obj.m_ref_count;
 		m_is_deleted = obj.m_is_deleted;
-		(*this->m_ref_count)++; // if the pointer is not null, increment the m_ref_count
+		++(*this->m_ref_count);
 #endif
 	}
 
@@ -115,17 +117,36 @@ public:
 			free(*this);
 			throw std::string("dsrc_ptr::operator=(&&) throw exception, trying double alocate");
 		}
-		--(*m_ref_count);
+
+		if (m_ref_count != nullptr && (*m_ref_count == 0 || *m_ref_count == 1))
+		{
+			delete m_data;
+			m_data = nullptr;
+			delete m_ref_count;
+			m_ref_count = nullptr;
+			delete m_is_deleted;
+			m_is_deleted = nullptr;
+		}
+		else
+		{
+			--(*m_ref_count);
+		}
+
+		if (obj.m_data == nullptr)
+		{
+			//m_data = nullptr;
+			m_ref_count  = new uint(0);
+			m_is_deleted = new bool(true);
+			return *this;
+		}
+		
 #endif
 
 		m_data = obj.m_data;
 #ifdef DEBUG
 		m_ref_count = obj.m_ref_count;
 		m_is_deleted = obj.m_is_deleted;
-		if (obj.m_data != nullptr)
-		{
-			--(*m_ref_count);
-		}
+		++(*m_ref_count);
 #endif
 		return (*this);
 	}
