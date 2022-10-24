@@ -11,15 +11,18 @@
 //
 // Mods
 //
- //#define NO_RUN_MAIN		// no run function run_main
+// #define NO_RUN_MAIN		// no run function run_main
 //
 // #define RUN_TESTS_SUCCES // run success tests
- //#define RUN_TESTS_FAIL   // run fail tests
+// #define RUN_TESTS_FAIL   // run fail tests
 // #define RUN_TESTS		// run succes and fail tests
+// 
 ///////////////////////////////////////////////
+
 #ifndef NO_RUN_MAIN
 void run_main(const int, char**); 
 #endif
+
 ///////////////////////////////////////////////
 
 int main(int argc, char** argv)
