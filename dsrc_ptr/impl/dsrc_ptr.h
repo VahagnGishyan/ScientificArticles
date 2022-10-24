@@ -21,7 +21,7 @@ public:
 	dsrc_ptr(nullptr_t) :
 		m_data(nullptr)
 #ifdef DEBUG
-		, m_ref_count (new uint(0))
+		, m_ref_count (new uint(1))
 		, m_is_deleted(new bool(true))
 #endif
 	{}
@@ -112,6 +112,11 @@ public:
 	dsrc_ptr& operator=(const dsrc_ptr& obj) // copy assignment
 	{
 #ifdef DEBUG
+		if (this == &obj)
+		{
+			return *this;
+		}
+
 		if (m_data != nullptr)
 		{
 			free(*this);
@@ -154,20 +159,37 @@ public:
 	dsrc_ptr& operator=(dsrc_ptr&& obj) noexcept
 	{
 #ifdef DEBUG
-		if (*m_ref_count > 1)
+		if (*m_ref_count == 1)
+		{
+			delete m_ref_count;
+			delete m_is_deleted;
+			m_ref_count = nullptr;
+			m_is_deleted = nullptr;
+			
+			if (m_data != nullptr)
+			{
+				delete m_data;
+				delete obj.m_data;
+				delete obj.m_ref_count;
+				delete obj.m_is_deleted;
+				errlog::writeln("dsrc_ptr::operator=(&&) throw exception, trying double alocate");
+				std::terminate();
+			}
+		}
+		else
 		{
 			--(*m_ref_count);
 		}
-		else if (m_data != nullptr)
-		{
-			free(*this);
-			errlog::writeln("dsrc_ptr::operator=(&&) throw exception, trying double alocate");
-			std::terminate();
-		}
-		std::swap(m_ref_count, obj.m_ref_count);
-		std::swap(m_is_deleted, obj.m_is_deleted);
 #endif
-		std::swap(m_data, obj.m_data);
+		m_data = obj.m_data;
+#ifdef DEBUG
+		m_ref_count  = obj.m_ref_count;
+		m_is_deleted = obj.m_is_deleted;
+		
+		obj.m_data = nullptr;
+		obj.m_ref_count = nullptr;
+		obj.m_is_deleted = nullptr;
+#endif
 		return (*this);
 	}
 

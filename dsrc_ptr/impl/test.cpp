@@ -258,6 +258,24 @@ namespace test
 	/////////////////////////////////////////////////////////
 
 	template <typename valueT, class... ArgsT>
+	static void success_test_18(ArgsT&&... args)
+	{
+		dsrc_ptr<valueT> ptr = dsrc_ptr<valueT>::make(args...);
+		dsrc_ptr<valueT>::free(ptr);
+		assert(ptr == nullptr);
+
+		ptr = dsrc_ptr<valueT>::make(args...);
+		dsrc_ptr<valueT> newptr = ptr;
+		ptr = dsrc_ptr<valueT>::make(args...);
+
+		dsrc_ptr<valueT>::free(newptr);
+		assert(newptr == nullptr);
+		dsrc_ptr<valueT>::free(ptr);
+	}
+
+	/////////////////////////////////////////////////////////
+
+	template <typename valueT, class... ArgsT>
 	static void success_run(ArgsT&&... args)
 	{
 		success_test_00<valueT>();
@@ -278,6 +296,7 @@ namespace test
 		success_test_15<valueT>(args...);
 		success_test_16<valueT>(args...);
 		success_test_17<valueT>(args...);
+		success_test_18<valueT>(args...);
 	}
 
 	void success_run()
