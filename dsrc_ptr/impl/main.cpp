@@ -58,10 +58,7 @@ int main(int argc, char** argv)
 
 void run_main(const int argc, char** argv)
 {
-	dsrc_ptr<int> ptr = nullptr;
-	ptr = dsrc_ptr<int>::make(4);
-	somedo(ptr);
-	dsrc_ptr<int>::free(ptr);
+
 }
 
 #endif
